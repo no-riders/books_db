@@ -1,3 +1,4 @@
+//jshint esnext: true
 var mongoose = require('mongoose');
 
 //Book Schema
@@ -35,22 +36,22 @@ var bookSchema = mongoose.Schema({
 var Book = module.exports = mongoose.model('Book', bookSchema);
 
 //get Books
-module.exports.getBooks = function(callback, limit) {
+module.exports.getBooks = (callback, limit) => {
 	Book.find(callback).limit(limit);
 };
 
 //get Book by ID
-module.exports.getBookById = function(id, callback) {
+module.exports.getBookById = (id, callback) => {
 	Book.findById(id, callback);
 };
 
 //add Book
-module.exports.addBook = function(book, callback) {
+module.exports.addBook = (book, callback) => {
 	Book.create(book, callback);
 };
 
 //update Book
-module.exports.updateBook = function(id, book, options, callback) {
+module.exports.updateBook = (id, book, options, callback) => {
 	var query = {_id: id};
 	var update = {
 		title: book.title,
@@ -66,7 +67,7 @@ module.exports.updateBook = function(id, book, options, callback) {
 };
 
 //delete Book
-module.exports.deleteBook = function(id, callback) {
+module.exports.deleteBook = (id, callback) => {
 	var query = {_id: id};
 	Book.remove(query, callback);
 };
