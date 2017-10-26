@@ -1,8 +1,8 @@
 //jshint esnext: true
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Book Schema
-var bookSchema = mongoose.Schema({
+let bookSchema = mongoose.Schema({
 	title: {
 		type: String,
 		required: true
@@ -33,7 +33,7 @@ var bookSchema = mongoose.Schema({
 	}
 });
 
-var Book = module.exports = mongoose.model('Book', bookSchema);
+const Book = module.exports = mongoose.model('Book', bookSchema);
 
 //get Books
 module.exports.getBooks = (callback, limit) => {
@@ -52,8 +52,8 @@ module.exports.addBook = (book, callback) => {
 
 //update Book
 module.exports.updateBook = (id, book, options, callback) => {
-	var query = {_id: id};
-	var update = {
+	let query = {_id: id};
+	let update = {
 		title: book.title,
 		genre: book.genre,
 		description: book.description,
@@ -68,7 +68,7 @@ module.exports.updateBook = (id, book, options, callback) => {
 
 //delete Book
 module.exports.deleteBook = (id, callback) => {
-	var query = {_id: id};
+	let query = {_id: id};
 	Book.remove(query, callback);
 };
 
